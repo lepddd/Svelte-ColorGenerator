@@ -30,7 +30,7 @@
 1. Builder - [Vite](https://vitejs.dev).
 2. Framework - [Svelte](https://svelte.dev).
 3. Bibliotecas - [Values.js](https://noeldelgado.github.io/values.js/).
-4. Icones - [Iconify](https://iconify.design)
-5. Node - [Node](https://nodejs.org/en/)
+4. Icones - [Iconify](https://iconify.design).
+5. Node - [Node](https://nodejs.org/en/).
 
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/74113986/177223264-14c04b6d-6d21-4da0-a49c-c55059c2495a.gif)
