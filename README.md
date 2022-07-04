@@ -6,6 +6,13 @@
 
 ### Aplicativo que seleciona uma cor que pode ser aleatória ou inserida manualmente e retorna uma paleta de cores, do mais claro ao mais escuro.
 
+## Features
+
+- Input para entrada de cor em hexadecimal.
+- Input colorpicker para entrada de cor.
+- Botão para cor aleatória.
+- Botão copy to clipboard.
+
 ## Tecnologias Usadas
 
 <table>
