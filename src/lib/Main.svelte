@@ -1,42 +1,39 @@
 <script>
-  import { newColor } from "../colorStore";
+  import { onDestroy } from "svelte";
+  import { color } from "../colorStore";
   import Values from "values.js";
-  import ColorCard from "./ColorCard.svelte";
+  import Card from "./Card.svelte";
 
-  let colors;
+  let colors = [];
 
-  newColor.subscribe((val) => {
-    colors = new Values(val).all();
+  const unsubscribe = color.subscribe((value) => {
+    colors = new Values(value.toString()).all();
   });
+
+  onDestroy(unsubscribe);
 </script>
 
 <main>
   {#each colors as color, index}
-    {#if index < 18}
-      <ColorCard
-        current={color.type == "base"}
-        color={color.rgb}
-        hexColor={color.hexString()}
-        brightness={color.getBrightness()}
-      />
-    {:else}
-      <ColorCard
-        flexCard
-        current={color.type == "base"}
-        color={color.rgb}
-        hexColor={color.hexString()}
-        brightness={color.getBrightness()}
-      />
-    {/if}
+    <Card {color} {index} />
   {/each}
 </main>
 
 <style>
   main {
-    display: flex;
-    flex-wrap: wrap;
-    height: calc(100% - 60px);
-    min-width: 300px;
-    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    min-width: 320px;
+    height: calc(100% - 80px);
+  }
+
+  @media screen and (min-width: 1200px) {
+    main {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      height: calc(100% - 90px);
+    }
   }
 </style>
