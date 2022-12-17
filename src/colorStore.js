@@ -1,11 +1,16 @@
+import Values from "values.js";
 import { writable } from "svelte/store";
 
-const newColor = () => {
+const newColors = () => {
+  let colors = [];
   let color = Math.floor(Math.random() * 16777215)
     .toString(16)
     .padStart(6, "0")
     .toUpperCase();
-  return `#${color}`;
+
+  colors = new Values(`#${color}`).all();
+
+  return colors;
 };
 
 function createNewColor() {
@@ -13,9 +18,8 @@ function createNewColor() {
 
   return {
     subscribe,
-    newColor: () => set(newColor()),
-    
+    newColor: () => set(newColors()),
   };
 }
 
-export const color = createNewColor();
+export const colors = createNewColor();

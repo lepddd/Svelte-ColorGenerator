@@ -1,9 +1,9 @@
 <script>
   import Icon from "@iconify/svelte";
-  import { color } from "../colorStore";
+  import { colors } from "../colorStore";
 </script>
 
-<button on:click={color.newColor}>
+<button on:click={colors.newColor}>
   <Icon icon="ic:round-shuffle" color="#212529" width="24" height="24" />
 </button>
 
