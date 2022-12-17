@@ -1,20 +1,19 @@
 <script>
   import { onDestroy } from "svelte";
-  import { color } from "../colorStore";
-  import Values from "values.js";
+  import { colors } from "../colorStore";
   import Card from "./Card.svelte";
 
-  let colors = [];
+  let allColors;
 
-  const unsubscribe = color.subscribe((value) => {
-    colors = new Values(value.toString()).all();
+  const unsubscribe = colors.subscribe((value) => {
+    allColors = value;
   });
 
   onDestroy(unsubscribe);
 </script>
 
 <main>
-  {#each colors as color, index}
+  {#each allColors as color, index}
     <Card {color} {index} />
   {/each}
 </main>

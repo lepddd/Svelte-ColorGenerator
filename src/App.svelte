@@ -1,9 +1,9 @@
 <script>
-  import { color } from "./colorStore";
+  import { colors } from "./colorStore";
   import Header from "./lib/Header.svelte";
   import Main from "./lib/Main.svelte";
 
-  color.newColor();
+  colors.newColor();
 </script>
 
 <div class="app">
