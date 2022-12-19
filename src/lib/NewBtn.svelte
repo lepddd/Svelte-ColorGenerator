@@ -12,9 +12,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f4f4f4;
+    background-color: #f1f1f1;
     border-radius: 50%;
-    border: 1px solid #f4f4f4;
+    border: 1px solid #f1f1f1;
     cursor: pointer;
     height: 50px;
     width: 50px;

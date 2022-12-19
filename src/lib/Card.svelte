@@ -1,10 +1,11 @@
 <script>
+  import Icon from "@iconify/svelte";
+
   export let color, index;
 
-  let brightness, hexColor, current;
+  let brightness, current;
 
   $: brightness = color.getBrightness() < 50;
-  $: hexColor = color.hexString();
   $: current = color.type === "base";
 </script>
 
@@ -14,7 +15,7 @@
   style="--color: rgb({color.rgb})"
 >
   <div class="color" class:current style="--color: rgb({color.rgb})">
-    <span class:brightness>{hexColor}</span>
+    <span class:brightness>#{color.hex}</span>
   </div>
 </div>
 
@@ -30,15 +31,19 @@
     border: 2px solid black;
   }
   .color {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
     height: 100%;
     background-color: var(--color);
     padding: 10px;
+    align-items: flex-start;
   }
   span {
     font-size: 12px;
     font-weight: 700;
     color: #171717;
+    transition: 0.5s color ease-in-out;
   }
   .brightness {
     color: #f4f4f4;
