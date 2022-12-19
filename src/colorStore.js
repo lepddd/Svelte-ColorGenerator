@@ -8,9 +8,13 @@ const newColors = () => {
     .padStart(6, "0")
     .toUpperCase();
 
-  colors = new Values(`#${color}`).all();
+  colors = customColor(color);
 
   return colors;
+};
+
+const customColor = (color) => {
+  return new Values(`#${color}`).all();
 };
 
 function createNewColor() {
@@ -19,6 +23,7 @@ function createNewColor() {
   return {
     subscribe,
     newColor: () => set(newColors()),
+    customColor: (col) => set(customColor(col)),
   };
 }
 

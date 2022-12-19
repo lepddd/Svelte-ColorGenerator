@@ -1,11 +1,30 @@
 <script>
   import NewBtn from "./NewBtn.svelte";
+  import { colors } from "../colorStore";
+  import toast from "svelte-french-toast";
 
-  let title = "Colors";
+  let color,
+    title = "Colors";
+
+  function searchColor(color) {
+    try {
+      if (color) {
+        colors.customColor(color);
+      }
+    } catch (error) {
+      toast.dismiss();
+      toast.error("Error !");
+    }
+  }
 </script>
 
 <header>
-  <span class="title">{title}</span>
+  <div class="box">
+    <span class="title">{title}</span>
+    <form on:submit|preventDefault={() => searchColor(color)}>
+      <input type="text" bind:value={color} maxlength="6"/>
+    </form>
+  </div>
   <NewBtn />
 </header>
 
@@ -21,5 +40,11 @@
     color: #212529;
     font-size: 32px;
     font-weight: 700;
+  }
+  .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
   }
 </style>

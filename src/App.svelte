@@ -2,11 +2,13 @@
   import { colors } from "./colorStore";
   import Header from "./lib/Header.svelte";
   import Main from "./lib/Main.svelte";
+  import { Toaster } from 'svelte-french-toast';
 
   colors.newColor();
 </script>
 
 <div class="app">
+  <Toaster/>
   <Header />
   <Main />
 </div>
