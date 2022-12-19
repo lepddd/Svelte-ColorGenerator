@@ -1,9 +1,11 @@
 <script>
-  import Icon from "@iconify/svelte";
+  import CopyBtn from "./CopyBtn.svelte";
 
   export let color, index;
 
-  let brightness, current;
+  let brightness,
+    current,
+    hidden = true;
 
   $: brightness = color.getBrightness() < 50;
   $: current = color.type === "base";
@@ -13,9 +15,14 @@
   class={index >= 18 ? "base" : "card"}
   class:current
   style="--color: rgb({color.rgb})"
+  on:mouseenter={() => (hidden = false)}
+  on:mouseleave={() => (hidden = true)}
 >
   <div class="color" class:current style="--color: rgb({color.rgb})">
-    <span class:brightness>#{color.hex}</span>
+    <div class="box">
+      <span class:brightness>#{color.hex}</span>
+      <CopyBtn {brightness} {hidden} {color}/>
+    </div>
   </div>
 </div>
 
@@ -28,22 +35,25 @@
   }
   .card.current {
     padding: 2px;
-    border: 2px solid black;
+    border: 2px solid #171717;
   }
   .color {
-    display: flex;
-    justify-content: space-between;
     width: 100%;
     height: 100%;
     background-color: var(--color);
-    padding: 10px;
-    align-items: flex-start;
   }
   span {
+    transition: 0.5s color ease-in-out;
     font-size: 12px;
     font-weight: 700;
     color: #171717;
-    transition: 0.5s color ease-in-out;
+  }
+  .box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    height: 30px;
   }
   .brightness {
     color: #f4f4f4;
